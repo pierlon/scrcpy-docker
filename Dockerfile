@@ -2,8 +2,6 @@ FROM alpine:edge
 
 LABEL maintainer="Pierre Gordon <pierregordon@protonmail.com>"
 
-ENV SCRCPY_VER=v1.0
-
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
     apk add --no-cache \
         ffmpeg \
@@ -19,7 +17,13 @@ RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositor
         musl-dev \
         pkgconf \
         sdl2-dev && \
-    curl -L -o scrcpy-server.jar https://github.com/Genymobile/scrcpy/releases/download/${SCRCPY_VER}/scrcpy-server-${SCRCPY_VER}.jar && \
+    curl -L -o scrcpy-server.jar \
+      $(curl https://api.github.com/repos/Genymobile/scrcpy/releases/latest | \
+         grep "browser_download_url" | \
+         grep "scrcpy-server" | \
+         cut -d ":" -f 2,3 | \
+         tr -d "\" ,") \
+      && \
     git clone https://github.com/Genymobile/scrcpy.git && \
     cd scrcpy && \
     meson x --buildtype release --strip -Db_lto=true -Dprebuilt_server=/scrcpy-server.jar && \
