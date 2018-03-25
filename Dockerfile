@@ -5,7 +5,6 @@ LABEL maintainer="Pierre Gordon <pierregordon@protonmail.com>"
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
     apk add --no-cache \
         ffmpeg \
-        mesa-dri-swrast \
         android-tools && \
     apk add --no-cache --virtual .build-deps \
         curl \
@@ -31,11 +30,7 @@ RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositor
     ninja && \
     ninja install && \
     cd / && \
-    rm -rf scrcpy scrcpy-server.jar && \
+    rm -rf scrcpy scrcpy-server.jar var/cache/APKINDEX.* && \
     apk del .build-deps && \
-    rm -r /var/cache/apk/APKINDEX.* && \
-    echo -e "#!/bin/sh\nscrcpy \$@" > init.sh && \
-    chmod +x init.sh
-
-ENTRYPOINT [ "/init.sh" ]
+    rm -r /var/cache/apk/APKINDEX.* 
 
