@@ -34,6 +34,7 @@ Inside the container, verify you can see your Android device with:
 ```shell
 $ adb devices
 ```
+Note: make sure the adb daemon is not running on the host (`adb kill-server`) to view devices in the container.
 
 And finally, run `scrcpy`:
 
