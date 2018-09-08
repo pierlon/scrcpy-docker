@@ -5,7 +5,8 @@ LABEL maintainer="Pierre Gordon <pierregordon@protonmail.com>"
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
     apk add --no-cache \
         ffmpeg \
-        android-tools && \
+        android-tools \
+        virtualgl && \
     apk add --no-cache --virtual .build-deps \
         curl \
         ffmpeg-dev \
