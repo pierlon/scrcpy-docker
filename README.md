@@ -1,3 +1,9 @@
+[![Docker Build Status](https://img.shields.io/docker/build/pierlo1/scrcpy.svg)](https://hub.docker.com/r/pierlo1/scrcpy/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/pierlo1/scrcpy.svg)](https://hub.docker.com/r/pierlo1/scrcpy/)
+[![AMD Size](https://img.shields.io/microbadger/image-size/pierlo1%2Fscrcpy/amd.svg?label=amd%20size)](https://hub.docker.com/r/pierlo1/scrcpy/)
+[![Intel Size](https://img.shields.io/microbadger/image-size/pierlo1%2Fscrcpy/intel.svg?label=intel%20size)](https://hub.docker.com/r/pierlo1/scrcpy/)
+[![Nvidia Size](https://img.shields.io/microbadger/image-size/pierlo1%2Fscrcpy/nvidia.svg?label=nvidia%20size)](https://hub.docker.com/r/pierlo1/scrcpy/)
+
 # scrcpy
 
 Docker image to run [scrcpy](https://github.com/Genymobile/scrcpy).
