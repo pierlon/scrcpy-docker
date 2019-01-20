@@ -1,8 +1,8 @@
 ### builder
 FROM alpine:edge AS builder
 
-ARG SCRCPY_VER=1.5
-ARG SERVER_HASH="d97aab6f60294e33e7ff79c2856ad3e01f912892395131f4f337e9ece03c24de"
+ARG SCRCPY_VER=1.6
+ARG SERVER_HASH="08df924bf6d10943df9eaacfff548a99871ebfca4641f8c7ddddb73f27cb905b"
 
 RUN apk add --no-cache \
         curl \
@@ -17,8 +17,7 @@ RUN apk add --no-cache \
         sdl2-dev
 
 RUN PATH=$PATH:/usr/lib/jvm/java-1.8-openjdk/bin
-# TODO: remove 'fixversion' for next release
-RUN curl -L -o scrcpy-server.jar https://github.com/Genymobile/scrcpy/releases/download/v${SCRCPY_VER}-fixversion/scrcpy-server-v${SCRCPY_VER}.jar
+RUN curl -L -o scrcpy-server.jar https://github.com/Genymobile/scrcpy/releases/download/v${SCRCPY_VER}/scrcpy-server-v${SCRCPY_VER}.jar
 RUN echo "$SERVER_HASH  /scrcpy-server.jar" | sha256sum -c -
 RUN git clone https://github.com/Genymobile/scrcpy.git
 RUN cd scrcpy && meson x --buildtype release --strip -Db_lto=true -Dprebuilt_server=/scrcpy-server.jar
