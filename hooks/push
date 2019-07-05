@@ -1,6 +1,0 @@
-#!/bin/bash
-set -ex
-
-for target in amd intel nvidia; do
-    docker push "$DOCKER_REPO:$target"
-done

@@ -1,9 +1,0 @@
-#!/bin/bash
-set -ex
-
-for target in amd intel nvidia; do
-    docker build \
-        --tag "$DOCKER_REPO:$target" \
-        --target "$target" \
-        .
-done
