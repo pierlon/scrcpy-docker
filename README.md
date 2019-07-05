@@ -28,11 +28,7 @@ For example: `pierlo1/scrcpy:amd`.
 Now let's run the image:
 
 ```shell
-$ docker run --rm -i -t --privileged \
-    -v /dev/bus/usb:/dev/bus/usb \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -e DISPLAY=$DISPLAY \
-    pierlo1/scrcpy:<graphics type>
+$ docker-compose run scrcpy-<graphics type> bash
 ```
 
 Inside the container, verify you can see your Android device with:
@@ -48,3 +44,20 @@ And finally, run `scrcpy`:
 $ scrcpy [options]
 ```
 
+If everything is set up once Android keys should be cached in the scrcpy Docker volume and you will be able to run the following command to immediately start the scrcpy session
+```shell
+docker-compose run scrcpy-<graphics type>
+```
+
+
+## Building
+
+```shell
+docker-compose build scrcpy
+```
+
+
+## Pushing
+```shell
+docker-compose build scrcpy
+```

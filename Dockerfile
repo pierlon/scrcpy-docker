@@ -37,6 +37,7 @@ RUN apk add --no-cache \
         virtualgl
 
 COPY --from=builder /scrcpy-server.jar /usr/local/share/scrcpy/
+COPY --from=builder /scrcpy-server.jar /usr/local/bin/
 COPY --from=builder /scrcpy/x/app/scrcpy /usr/local/bin/
 
 ### runner (amd)

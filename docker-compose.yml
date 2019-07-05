@@ -1,0 +1,56 @@
+version: '3.4'
+services:
+  scrcpy-intel:
+    build:
+      context: .
+      target: intel
+    image: pierlo1/scrcpy:intel
+    privileged: true
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/bus/usb:/dev/bus/usb
+      - /etc/machine-id:/etc/machine-id
+      - scrcpy:/root/.android
+    devices:
+      - /dev/snd
+    command: scrcpy -S
+
+  scrcpy-amd:
+    build:
+      context: .
+      target: intel
+    image: pierlo1/scrcpy:amd
+    privileged: true
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/bus/usb:/dev/bus/usb
+      - /etc/machine-id:/etc/machine-id
+      - scrcpy:/root/.android
+    devices:
+      - /dev/snd
+    command: scrcpy -S
+  
+  scrcpy-nvidia:
+    build:
+      context: .
+      target: intel
+    image: pierlo1/scrcpy:nvidia
+    privileged: true
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/bus/usb:/dev/bus/usb
+      - /etc/machine-id:/etc/machine-id
+      - scrcpy:/root/.android
+    devices:
+      - /dev/snd
+    command: scrcpy -S
+
+
+volumes:
+  scrcpy:
