@@ -46,8 +46,10 @@ $ scrcpy [options]
 
 If everything is set up once Android keys should be cached in the scrcpy Docker volume and you will be able to run the following command to immediately start the scrcpy session
 ```shell
-xhost local:root; docker-compose run scrcpy-<graphics type>
+xhost local:root; docker-compose run scrcpy-<graphics type> [options]
 ```
+Example:
+`xhost local:root; docker-compose run scrcpy-intel scrcpy -S`
 
 
 ## Building
