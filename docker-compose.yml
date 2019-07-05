@@ -52,7 +52,7 @@ services:
       - scrcpy:/root/.android
     devices:
       - /dev/snd
-    command: scrcpy -S
+    command: scrcpy
 
 
 volumes:
