@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  scrcpy:
+    image: pierlo1/scrcpy:${SCRCPY_GRAPHICS_TYPE:?Please set the SCRCPY_GRAPHICS_TYPE environment variable.}
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      # preserve authorization keys
+      - scrcpy_adb_keys:/root/.android
+    environment:
+      DISPLAY: $DISPLAY
+      ADB_VENDOR_KEYS: /root/.android
+    privileged: true
+    tty: true
+
+volumes:
+  scrcpy_adb_keys:
