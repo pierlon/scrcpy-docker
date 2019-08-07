@@ -47,4 +47,3 @@ And finally, run `scrcpy`:
 ```shell
 $ scrcpy [options]
 ```
-
