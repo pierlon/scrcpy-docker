@@ -17,10 +17,10 @@ RUN apk add --no-cache \
         sdl2-dev
 
 RUN PATH=$PATH:/usr/lib/jvm/java-1.8-openjdk/bin
-RUN curl -L -o scrcpy-server.jar https://github.com/Genymobile/scrcpy/releases/download/v${SCRCPY_VER}/scrcpy-server-v${SCRCPY_VER}.jar
-RUN echo "$SERVER_HASH  /scrcpy-server.jar" | sha256sum -c -
+RUN curl -L -o scrcpy-server https://github.com/Genymobile/scrcpy/releases/download/v${SCRCPY_VER}/scrcpy-server-v${SCRCPY_VER}
+RUN echo "$SERVER_HASH  /scrcpy-server" | sha256sum -c -
 RUN git clone https://github.com/Genymobile/scrcpy.git
-RUN cd scrcpy && meson x --buildtype release --strip -Db_lto=true -Dprebuilt_server=/scrcpy-server.jar
+RUN cd scrcpy && meson x --buildtype release --strip -Db_lto=true -Dprebuilt_server=/scrcpy-server
 RUN cd scrcpy/x && ninja
 
 ### runner
@@ -36,7 +36,7 @@ RUN apk add --no-cache \
         ffmpeg \
         virtualgl
 
-COPY --from=builder /scrcpy-server.jar /usr/local/share/scrcpy/
+COPY --from=builder /scrcpy-server /usr/local/share/scrcpy/
 COPY --from=builder /scrcpy/x/app/scrcpy /usr/local/bin/
 
 ### runner (amd)
