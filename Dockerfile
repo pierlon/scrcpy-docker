@@ -1,8 +1,8 @@
 ### builder
 FROM alpine:edge AS builder
 
-ARG SCRCPY_VER=1.12.1
-ARG SERVER_HASH="63e569c8a1d0c1df31d48c4214871c479a601782945fed50c1e61167d78266ea"
+ARG SCRCPY_VER=1.16
+ARG SERVER_HASH="94a79e05b4498d0460ab7bd9d12cbf05156e3a47bf0c5d1420cee1d4493b3832"
 
 RUN apk add --no-cache \
         curl \
