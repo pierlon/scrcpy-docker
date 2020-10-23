@@ -19,7 +19,7 @@ RUN apk add --no-cache \
 RUN PATH=$PATH:/usr/lib/jvm/java-1.8-openjdk/bin
 RUN curl -L -o scrcpy-server https://github.com/Genymobile/scrcpy/releases/download/v${SCRCPY_VER}/scrcpy-server-v${SCRCPY_VER}
 RUN echo "$SERVER_HASH  /scrcpy-server" | sha256sum -c -
-RUN git clone https://github.com/Genymobile/scrcpy.git
+RUN git clone --branch v${SCRCPY_VER} --depth 1 https://github.com/Genymobile/scrcpy.git
 RUN cd scrcpy && meson x --buildtype release --strip -Db_lto=true -Dprebuilt_server=/scrcpy-server
 RUN cd scrcpy/x && ninja
 
