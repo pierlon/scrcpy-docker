@@ -14,7 +14,8 @@ RUN apk add --no-cache \
         musl-dev \
         openjdk8 \
         pkgconf \
-        sdl2-dev
+        sdl2-dev \
+        libusb-dev
 
 RUN PATH=$PATH:/usr/lib/jvm/java-1.8-openjdk/bin
 RUN curl -L -o scrcpy-server https://github.com/Genymobile/scrcpy/releases/download/v${SCRCPY_VER}/scrcpy-server-v${SCRCPY_VER}
